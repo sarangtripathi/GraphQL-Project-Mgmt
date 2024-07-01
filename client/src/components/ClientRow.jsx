@@ -7,8 +7,8 @@ export default function ClientRow({client}) {
 
   const [deleteClient] = useMutation(DELETE_CLIENT,{
     variables: { id: client.id },
-    // refetchQueries: [{query: GET_CLIENTS}]
-    update(cache, {data: { deleteClient }}){
+    // refetchQueries: [{query: GET_CLIENTS}]         First method without reloading the deleted
+    update(cache, {data: { deleteClient }}){       // Second method
       const {clients} = cache.readQuery({ query:
         GET_CLIENTS});
         cache.writeQuery({
